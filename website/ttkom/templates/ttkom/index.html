@@ -15,21 +15,26 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+            {% for post in posts %}
             <div class="post-preview">
-                <a href="post.html">
+                <a href="{% url 'post' post.pk %}">
                     <h2 class="post-title">
-                        Man must explore, and this is exploration at its greatest
+                        {{ post.title }}
                     </h2>
                     <h3 class="post-subtitle">
-                        Problems look mighty small from 150 miles up
+                        {{ post.content|truncatewords:10 }}
                     </h3>
                 </a>
                 <p class="post-meta">Posted by
-                    <a href="#">Start Bootstrap</a>
-                    on September 24, 2019</p>
+                    <a href="#">{{ post.author }}</a>
+                    on {{ post.date_post }}</p>
             </div>
-
-            <hr>
+            <hr/>
+            {% empty %}
+            <div class="post-preview">
+                <h2 class="post-title"> Il semblerait qu'il n'y ait pas de post sur le site ... </h2>
+            </div>
+            {% endfor %}
             <!-- Pager -->
             <!--
         <div class="clearfix">
@@ -39,5 +44,5 @@
         </div>
     </div>
 </div>
-<hr>
+<hr/>
 {% endblock %}

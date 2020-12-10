@@ -20,15 +20,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY',"$czo7qm^5t47(vr04qu_y=krc2p6jqy#+awz3-3nc_bm%gzk-m")
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY", "$czo7qm^5t47(vr04qu_y=krc2p6jqy#+awz3-3nc_bm%gzk-m"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
+if os.environ.get("ENV") == "PRODUCTION":
     DEBUG = False
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['ttkom.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ["ttkom.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
@@ -54,8 +56,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-if os.environ.get('ENV') == 'PRODUCTION':
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFileStorage'
+if os.environ.get("ENV") == "PRODUCTION":
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFileStorage"
 
 ROOT_URLCONF = "website.urls"
 
@@ -124,11 +126,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-if os.environ.get('ENV') == 'PRODUCTION':
+if os.environ.get("ENV") == "PRODUCTION":
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
 
-    STATICFILES_DIRS = (
-        os.path.join(PROJECT_ROOT, 'static'),
-    )
+    STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static"),)
 STATIC_URL = "/static/"

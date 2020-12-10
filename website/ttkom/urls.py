@@ -1,4 +1,4 @@
 from django.urls import path
-from .views import index
+from .views import index, post
 
-urlpatterns = [path("", index, name="index")]
+urlpatterns = [path("", index, name="index"), path("post/<int:pk>", post, name="post")]
