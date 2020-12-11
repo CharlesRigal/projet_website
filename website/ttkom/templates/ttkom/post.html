@@ -1,6 +1,6 @@
 {% extends "ttkom/base.html" %}
 {% load static %}
-{% block image %}{% static "ttkom/img/home-bg.jpg" %}{% endblock %}
+{% block image %}{{ post.photo.url }}{% endblock %}
 {% block head_title %}{{ post.name }}{% endblock %}
 
 {% block content %}

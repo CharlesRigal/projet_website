@@ -27,6 +27,7 @@ class Post(models.Model):
     content = models.TextField()
     date_post = models.DateTimeField()
     likes = models.ManyToManyField(User, blank=True, related_name="blog_post")
+    photo = models.ImageField(upload_to='post-photo', null=True)
 
     @property
     def total_likes(self):
