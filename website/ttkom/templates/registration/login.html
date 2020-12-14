@@ -1,0 +1,44 @@
+{% extends "ttkom/base.html" %}
+{% load static %}
+{% block title %}Le Blog{% endblock %}
+{% block image %}{% static "ttkom/img/login-bg.jpg" %}{% endblock %}
+{% block head_title %}Connextion{% endblock %}
+{% block content %}
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <form action="{% url 'login' %}#form" id="form" method="post">
+        {% csrf_token %}
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <ul class="errorlist nonfield">
+              {% for error in form.non_field_errors %}
+              <li class="help-block text-danger">{{error}}</li>
+              {% endfor %}
+            </ul>
+            <label>Nom</label>
+            <input type="text" id="id_username" class="form-control" placeholder="Nom" name="username" required
+              data-validation-required-message="Please enter your name." autocomplete="username" {% if form.username.value != None %}value="{{ form.username.value|stringformat:'s' }}" {% endif %}>
+            <p class="help-block text-danger">{{ form.username.errors }}</p>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Password</label>
+            <input type="password" id="id_password" class="form-control" placeholder="Mot de passe" name="password"
+              required data-validation-required-message="Please enter your password." maxlength="150"
+              autocomplete="current-password" value="">
+            <p class="help-block text-danger">{{ form.password.errors }}</p>
+          </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Valider</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+{% endblock %}

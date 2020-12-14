@@ -61,6 +61,9 @@ if os.environ.get("ENV") == "PRODUCTION":
 
 ROOT_URLCONF = "website.urls"
 
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'connextion'
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
