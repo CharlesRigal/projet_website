@@ -11,6 +11,7 @@ from .tokens import account_activation_token
 
 # Create your views here.
 
+
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -23,9 +24,9 @@ def activate(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        return redirect('index')
+        return redirect("index")
     else:
-        return render(request, 'registration/account_activation_invalid.html')
+        return render(request, "registration/account_activation_invalid.html")
 
 
 def register(request):
@@ -48,12 +49,14 @@ def register(request):
             },
         )
         user.email_user(subject, message)
-        return redirect('account_activation_send')
+        return redirect("account_activation_send")
     context = {"form": form}
     return render(request, "registration/register.html", context=context)
 
+
 def account_activation_send(request):
     return render(request, "registration/account_activation_send.html")
+
 
 def index(request):
     posts = Post.objects.filter(date_post__lt=timezone.now()).order_by("-date_post")
