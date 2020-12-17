@@ -1,0 +1,20 @@
+{% extends "ttkom/base.html" %}
+{% load static %}
+{% block image %}{{ post.photo.url }}{% endblock %}
+{% block head_title %}{{ post.name }}{% endblock %}
+
+{% block content %}
+
+<!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {{ post.content }}
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+  {% endblock %}
