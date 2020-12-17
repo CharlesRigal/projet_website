@@ -32,6 +32,14 @@ else:
 
 ALLOWED_HOSTS = ["ttkom.herokuapp.com", "127.0.0.1"]
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "rcserveur@gmail.com"
+EMAIL_HOST_PASSWORD = "dfqgkjqshdgqhgq"
+EMAIL_PORT = 587
+
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Application definition
 
@@ -56,13 +64,13 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-if os.environ.get("ENV") == "PRODUCTION":
+if not DEBUG:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFileStorage"
 
 ROOT_URLCONF = "website.urls"
 
-LOGIN_REDIRECT_URL = 'index'
-LOGIN_URL = 'connextion'
+LOGIN_REDIRECT_URL = "index"
+LOGIN_URL = "connextion"
 
 TEMPLATES = [
     {
@@ -129,7 +137,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-if os.environ.get("ENV") == "PRODUCTION":
+if not DEBUG:
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
 

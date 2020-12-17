@@ -1,0 +1,92 @@
+{% extends "ttkom/base.html" %}
+{% load static %}
+{% block head_title %}S'inscrire{% endblock %}
+{% block image %}{% static "ttkom/img/login-bg.jpg" %}{% endblock %}
+{% block page_title %}Page d'inscription{% endblock %}
+{% block subheading %}Inscrits toi !!{% endblock %}
+{% block content %}
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <form action="{% url 'register' %}#form" id="form" method="post">
+        {% csrf_token %}
+
+        {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field.errors }}
+        {{ hidden_field }}
+        {% endfor %}
+
+        {{ form.non_field_errors }}
+        {% for field in form.visible_fields %}
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            {% if field.errors %}
+            <ul>
+              {% for error in field.errors %}
+              <li class="help-block text-danger">{{ error }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+            <input type="{{ field.field.widget.input_type }}" id="{{ field.id_for_label }}" class="form-control"
+              placeholder="{{ field.label }}" name="{{ field.name }}" required
+              data-validation-required-message="Please enter your {{ field.label }}" maxlength="150"
+              autocomplete="current-password" {% if field.value != None and field.field.widget.input_type != "password" %}value="{{ field.value|stringformat:'s' }}" {% endif %}>
+            <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+          </div>
+        </div>
+        <br />
+        {% endfor %}
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Valider</button>
+      </form>
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          <li class="list-inline-item">
+            <a href="#">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Charles Rigal 2020</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/static/ttkom/vendor/jquery/jquery.min.js"></script>
+<script src="/static/ttkom/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/static/ttkom/js/clean-blog.js"></script>
+
+</body>
+
+</html>
+-->
+</div>
+</div>
+</div>
+<hr>
+{% endblock %}
