@@ -20,4 +20,10 @@ urlpatterns = [
         account_activation_send,
         name="account_activation_send",
     ),
+
+    # password
+    path("reinitialiser-le-mot-de-pass/", auth_views.PasswordResetView.as_view(), name="password_reset"),
+    path("reinitialiser-le-mot-de-pass/valider/", auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
+    path('reinitialiser/<str:uidb64>/<str:token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path('reinitialiser/valider/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
 ]

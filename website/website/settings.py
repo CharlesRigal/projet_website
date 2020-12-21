@@ -70,7 +70,7 @@ if not DEBUG:
 ROOT_URLCONF = "website.urls"
 
 LOGIN_REDIRECT_URL = "index"
-LOGIN_URL = "connextion"
+LOGIN_URL = "login"
 
 TEMPLATES = [
     {
