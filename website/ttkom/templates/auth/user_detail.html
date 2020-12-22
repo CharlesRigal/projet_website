@@ -1,0 +1,23 @@
+{% extends "ttkom/base.html" %}
+{% load static %}
+{% block title %}page de compte de {{ user.username }}{% endblock %}
+{% block image %}{% endblock %}
+{% block head_title %}En quoi c'est fait ?!{% endblock %}
+{% block subheading %}Si tu veux étre sur regarde{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h1>pseudo: {{ user.username }}</h1>
+                {% if user.first_name != "" %} <p>nom: {{ user.first_name }}</p>{% endif %}
+                {% if user.last_name != "" %} <p>prenom: {{ user.last_name }}</p>{% endif %}
+                <p>incrit depuis: {{ user.date_joined|date }}</p>
+                {% if user.first_name != None %} <p>derniere connection le {{ user.last_login|date }}</p>{% endif %}
+                {% if user.is_staff %}
+                    <p>et il fait parti du staff faut pas l'embéter</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <hr>
+{% endblock %}

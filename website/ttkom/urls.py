@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, post, register, activate, account_activation_send
+from .views import index, post, register, activate, account_activation_send, DetailUser
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -21,9 +21,12 @@ urlpatterns = [
         name="account_activation_send",
     ),
 
-    # password
+    # password recovery
     path("reinitialiser-le-mot-de-pass/", auth_views.PasswordResetView.as_view(), name="password_reset"),
     path("reinitialiser-le-mot-de-pass/valider/", auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
     path('reinitialiser/<str:uidb64>/<str:token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
     path('reinitialiser/valider/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
+
+    # look up user
+    path("utilisateur/<int:pk>", DetailUser.as_view(), name="detail_user"),
 ]

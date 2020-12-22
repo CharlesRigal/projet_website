@@ -8,8 +8,13 @@ from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_text
 from .tokens import account_activation_token
+from django.views.generic import DetailView
 
 # Create your views here.
+
+class DetailUser(DetailView):
+    model = User
+    context_object_name = "user"
 
 
 def activate(request, uidb64, token):
