@@ -9,6 +9,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email_confirmed = models.BooleanField(default=False)
+    pp = models.ImageField(upload_to="user-photo", null=True)
 
     def __str__(self):
         return self.user.username
