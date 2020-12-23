@@ -12,6 +12,7 @@ from django.views.generic import DetailView
 
 # Create your views here.
 
+
 class DetailUser(DetailView):
     model = User
     context_object_name = "user"
