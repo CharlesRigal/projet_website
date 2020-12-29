@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, User
-from .forms import RegisterForm
+from .forms import RegisterForm, ChangeForm;
 from django.utils import timezone
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_text
@@ -11,6 +12,24 @@ from .tokens import account_activation_token
 from django.views.generic import DetailView
 
 # Create your views here.
+
+
+@login_required(login_url="/connextion/")
+def account(request):
+    form = ChangeForm(request.POST or None, instance=request.user)
+    if request.POST and form.is_valid():
+        form.save()
+
+    context = {
+        'form': form,
+    }
+    return render(request, "ttkom/account/edit_account.html", context=context)
+
+
+def like(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.likes.add(request.user)
+    return redirect("post", pk)
 
 
 class DetailUser(DetailView):

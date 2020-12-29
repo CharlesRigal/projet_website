@@ -1,10 +1,18 @@
-from django.urls import path
-from .views import index, post, register, activate, account_activation_send, DetailUser
+from django.urls import path, reverse_lazy
+from .views import index, post, register, activate, account_activation_send, DetailUser, like, account
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    # edit account
+    path("compte/", account, name="edit_account"),
+    path("changer_le_mdp/", auth_views.PasswordChangeView.as_view(
+        success_url=reverse_lazy("login"),
+    ), name="password_change"),
+
+
     path("", index, name="index"),
     path("post/<int:pk>", post, name="post"),
+    path("like/<int:pk>", like, name="like_post"),
     # login
     path("connextion/", auth_views.LoginView.as_view(), name="login"),
     path(
