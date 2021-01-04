@@ -47,4 +47,8 @@ class Comment(models.Model):
     fk_post = models.ForeignKey(Post, on_delete=models.DO_NOTHING)
     content = models.TextField()
     date_comment = models.DateTimeField(auto_now_add=True)
-    likes = models.ManyToManyField(User, related_name="blog_comment")
+    likes = models.ManyToManyField(User, related_name="blog_comment", blank=True)
+
+    def __str__(self):
+        return f"{ self.fk_author.username }, { self.fk_post.name }" 
+    

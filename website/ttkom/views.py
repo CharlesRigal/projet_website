@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, User
-from .forms import RegisterForm, ChangeForm;
+from .models import Post, User, Comment
+from .forms import RegisterForm, ChangeForm, CommentForm
 from django.utils import timezone
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import login
@@ -92,8 +92,15 @@ def index(request):
 
 
 def post(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    data = {
+    form = CommentForm(request.POST or None)
+    post = Post.objects.get(pk=pk)
+    comments = Comment.objects.filter(fk_post=pk).order_by("-date_comment")
+    if request.POST and form.is_valid():
+        Comment.objects.create(fk_post=post, fk_author=request.user, content=form.cleaned_data["content"])
+        form = CommentForm(None)
+    context = {
+        "form": form,
         "post": post,
+        "comments": comments,
     }
-    return render(request, "ttkom/post.html", context=data)
+    return render(request, "ttkom/post.html", context=context)
