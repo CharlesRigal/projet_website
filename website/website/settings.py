@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ["ttkom.herokuapp.com", "127.0.0.1"]
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "rcserveur@gmail.com"
+EMAIL_HOST_USER = "adress@gmail.com"
 EMAIL_HOST_PASSWORD = "dfqgkjqshdgqhgq"
 EMAIL_PORT = 587
 
@@ -44,6 +44,7 @@ if DEBUG:
 # Application definition
 
 INSTALLED_APPS = [
+    "portfolio",
     "ttkom",
     "django.contrib.admin",
     "django.contrib.auth",

@@ -21,13 +21,13 @@ def account(request):
         form.save()
 
     context = {
-        'form': form,
+        "form": form,
     }
     return render(request, "ttkom/account/edit_account.html", context=context)
 
 
 def like(request, pk):
-    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post = get_object_or_404(Post, id=request.POST.get("post_id"))
     post.likes.add(request.user)
     return redirect("post", pk)
 
@@ -96,7 +96,9 @@ def post(request, pk):
     post = Post.objects.get(pk=pk)
     comments = Comment.objects.filter(fk_post=pk).order_by("-date_comment")
     if request.POST and form.is_valid():
-        Comment.objects.create(fk_post=post, fk_author=request.user, content=form.cleaned_data["content"])
+        Comment.objects.create(
+            fk_post=post, fk_author=request.user, content=form.cleaned_data["content"]
+        )
         form = CommentForm(None)
     context = {
         "form": form,

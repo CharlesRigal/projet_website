@@ -50,5 +50,4 @@ class Comment(models.Model):
     likes = models.ManyToManyField(User, related_name="blog_comment", blank=True)
 
     def __str__(self):
-        return f"{ self.fk_author.username }, { self.fk_post.name }" 
-    
+        return f"{ self.fk_author.username }, { self.fk_post.name }"
