@@ -8,13 +8,15 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('ttkom', '0003_profile_pp'),
+        ("ttkom", "0003_profile_pp"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='comment',
-            name='likes',
-            field=models.ManyToManyField(blank=True, related_name='blog_comment', to=settings.AUTH_USER_MODEL),
+            model_name="comment",
+            name="likes",
+            field=models.ManyToManyField(
+                blank=True, related_name="blog_comment", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]
