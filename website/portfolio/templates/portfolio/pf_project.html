@@ -1,0 +1,43 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block picture %}{% endblock %}
+{% block head_title %}Mes Projets{% endblock %}
+{% block subheading %}</hr>{% endblock %}
+{% block content %}
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <h1 class="text-center">Liste de mes Projets</h1>
+            {% for projet in projets %}
+            <div class="post-preview">
+                <a href="{% url 'pf_index' %}">
+                    <h2 class="post-title">
+                        {{ projet.name }}
+                    </h2>
+                    <h3 class="post-subtitle">
+                        {{ projet.wording|truncatewords:10 }}
+                    </h3>
+                </a>
+                <p class="post-meta">
+                    competance en liens
+                    {% for skill in projet.skills.all %}
+                    <a href="{% url 'pf_index' %}">
+                        {{ skill.name }}
+                    </a>
+                    {% endfor %}
+                </p>
+            </div>
+            <hr>
+            {% empty %}
+            <div class="post-preview">
+                <h2 class="post-title"> Il semblerait qu'il n'y a pas encore de projet sur le site ... </h2>
+            </div>
+            {% endfor %}
+
+        </div>
+        <hr>
+    </div>
+</div>
+</div>
+{% endblock %}
