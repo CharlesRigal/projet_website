@@ -16,7 +16,7 @@ class Projet(models.Model):
     name = models.CharField("Nom", max_length=50)
     wording = models.TextField()
     picture = models.ImageField(str(name) + "_picture", upload_to="projet/")
-    skills = models.ManyToManyField(Skill)
+    skills = models.ManyToManyField(Skill, blank=True)
 
     def __str__(self):
         return self.name
