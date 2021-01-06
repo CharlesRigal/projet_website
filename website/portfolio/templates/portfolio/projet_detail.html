@@ -20,7 +20,7 @@
                 <p class="post-meta">
                     projet en lien
                     {% for skill in skills %}
-                    <a href="{% url 'projet' projet.pk %}">
+                    <a href="{% url 'skill' skill.pk %}">
                         {{ skill.name }}
                     </a>
                     {% endfor %}

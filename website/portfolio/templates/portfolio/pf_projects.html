@@ -8,10 +8,9 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <h1 class="text-center">Liste de mes Projets</h1>
             {% for projet in projets %}
             <div class="post-preview">
-                <a href="{% url 'pf_index' %}">
+                <a href="{% url 'projet' projet.pk %}">
                     <h2 class="post-title">
                         {{ projet.name }}
                     </h2>
