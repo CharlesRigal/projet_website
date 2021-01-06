@@ -22,7 +22,7 @@
                 <p class="post-meta">
                     competance en liens
                     {% for skill in projet.skills.all %}
-                    <a href="{% url 'pf_index' %}">
+                    <a href="{% url 'skill' projet.pk %}">
                         {{ skill.name }}
                     </a>
                     {% endfor %}

@@ -11,7 +11,7 @@
             <h1 class="text-center">Liste de mes competances</h1>
             {% for skill in skills %}
             <div class="post-preview">
-                <a href="{% url 'pf_index' %}">
+                <a href="{% url 'skill' skill.pk %}">
                     <h2 class="post-title">
                         {{ skill.name }}
                     </h2>
