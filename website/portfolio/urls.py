@@ -6,5 +6,5 @@ urlpatterns = [
     path("projets/", projects, name="projects"),
     path("skills/", skills, name="skills"),
     path("skill/<int:pk>", detail_skill, name="skill"),
-    path("projet/<int:pk>", detail_projet, name="projet")
+    path("projet/<int:pk>", detail_projet, name="projet"),
 ]

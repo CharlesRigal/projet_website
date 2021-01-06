@@ -5,7 +5,7 @@ from django.db import models
 
 class Skill(models.Model):
     name = models.CharField("Nom", max_length=50)
-    subheading= models.TextField()
+    subheading = models.TextField()
     wording = models.TextField()
     picture = models.ImageField(str(name) + "_skill", upload_to="skill/")
 
