@@ -23,3 +23,9 @@ def detail_skill(request, pk):
     skill = get_object_or_404(Skill, pk=pk)
     projets = skill.projet_set.all()
     return render(request, "portfolio/skill_detail.html", context={"projets": projets, "skill": skill})
+
+
+def detail_projet(request, pk):
+    projet = get_object_or_404(Projet, pk=pk)
+    skills = projet.skills.all()
+    return render(request, "portfolio/projet_detail.html", context={"projet": projet, "skills": skills})

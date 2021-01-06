@@ -1,8 +1,8 @@
 {% extends "portfolio/base.html" %}
 {% load static %}
-{% block picture %}{{ skill.picture.url }}{% endblock %}
-{% block head_title %}{{ skill.name }}{% endblock %}
-{% block subheading %}{{ skill.subtitle }}{% endblock %}
+{% block picture %}{{ projet.picture.url }}{% endblock %}
+{% block head_title %}{{ projet.name }}{% endblock %}
+{% block subheading %}{{ projet.subtitle }}{% endblock %}
 
 
 {% block content %}
@@ -12,16 +12,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                {{ skill.wording }}
+                {{ projet.wording }}
                 <hr>
             </div>
             <hr>
             <div class="col-lg-8 col-md-10 mx-auto">
                 <p class="post-meta">
                     projet en lien
-                    {% for projet in projets %}
+                    {% for skill in skills %}
                     <a href="{% url 'projet' projet.pk %}">
-                        {{ projet.name }}
+                        {{ skill.name }}
                     </a>
                     {% endfor %}
                 </p>
