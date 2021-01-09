@@ -1,7 +1,7 @@
 {% extends "ttkom/base.html" %}
 {% load static %}
 {% block title %}compte de {{ user.username }}{% endblock %}
-{% block picture %}{% static 'ttkom/img/edit_account_bg.jpg' %}{% endblock %}
+{% block picture %}{{ user.profile.pp.url }}{% endblock %}
 {% block head_title %}Votre compte{% endblock %}
 {% block subheading %}Éditer les zone de text et valider pour changer les informations{% endblock %}
 {% block content %}

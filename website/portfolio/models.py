@@ -3,6 +3,10 @@ from django.db import models
 # Create your models here.
 
 
+class Cv(models.Model):
+    cv = models.FileField("charles_rigal_cv.pdf",upload_to="portfolio/cv/")
+
+
 class Skill(models.Model):
     name = models.CharField("Nom", max_length=50)
     subheading = models.TextField()

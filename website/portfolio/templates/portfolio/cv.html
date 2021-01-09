@@ -1,0 +1,28 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block picture %}{% static 'portfolio/img/bg-cv.jpg' %}{% endblock %}
+{% block head_title %}Mon Cv{% endblock %}
+{% block subheading %}Avec prévisualisation et téléchargement{% endblock %}
+{% block content %}
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="container-fluid p-4">
+                    <a href="{{ cv.cv.url }}">
+                        <button class="btn btn-primary btn-block">prévisualier</button>
+                    </a>
+                </div>
+                <div class="container-fluid p-4">
+                    <a href='{{ cv.cv.url }}' download>
+                        <button class="btn btn-primary btn-block">Télécharger</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<hr>
+{% endblock %}

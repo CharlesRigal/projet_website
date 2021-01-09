@@ -1,6 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Skill, Projet
+from .models import Skill, Projet, Cv
 from django.views.generic import DetailView
+
+
+def cv(request):
+    cv = get_object_or_404(Cv, pk=1)
+    return render(request, "portfolio/cv.html", context={"cv": cv})
 
 
 def index(request):
