@@ -132,6 +132,15 @@ img::-moz-selection {
   background: transparent;
 }
 
+.trycss {
+  border-radius: 15px;
+  display: inline-block;
+  max-width:100px;
+  max-height:95px;
+  width: auto;
+  height: auto;
+}
+
 img::selection {
   color: #fff;
   background: transparent;
