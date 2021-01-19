@@ -1,0 +1,51 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block head_title %}Me contacter{% endblock %}
+{% block subheading %}{% endblock subheading %}
+{% block image %}{% static "ttkom/img/login-bg.jpg" %}{% endblock %}
+{% block content %}
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <form action="{% url 'contact' %}#form" id="form" method="post">
+        {% csrf_token %}
+
+        {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field.errors }}
+        {{ hidden_field }}
+        {% endfor %}
+
+        {{ form.non_field_errors }}
+        {% for field in form.visible_fields %}
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            {% if field.errors %}
+            <ul>
+              {% for error in field.errors %}
+              <li class="help-block text-danger">{{ error }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+            <input type="{{ field.widget.type }}" id="{{ field.id_for_label }}" class="form-control"
+              placeholder="{{ field.label }}" name="{{ field.name }}" required
+              data-validation-required-message="Please enter your {{ field.label }}" maxlength="150"
+              autocomplete="current-password" {% if field.value != None and field.field.widget.input_type != "password" %}value="{{ field.value|stringformat:'s' }}" {% endif %}>
+            <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+          </div>
+        </div>
+        <br/>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Valider</button>
+      </form>
+    </div>
+  </div>
+</div>
+<hr>
+<script>
+  {% if send_form != "" %}
+    alert("{{ send_form|safe }}")
+  {% endif %}
+</script>
+{% endblock %}

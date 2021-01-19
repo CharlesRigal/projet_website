@@ -3,8 +3,14 @@ from django.db import models
 # Create your models here.
 
 
+class Contact(models.Model):
+    email = models.EmailField()
+    subject = models.CharField("Objet", max_length=100)
+    message = models.TextField("message")
+
+
 class Cv(models.Model):
-    cv = models.FileField("charles_rigal_cv.pdf",upload_to="portfolio/cv/")
+    cv = models.FileField("charles_rigal_cv.pdf", upload_to="portfolio/cv/")
 
 
 class Skill(models.Model):

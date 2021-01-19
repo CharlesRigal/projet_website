@@ -1,6 +1,26 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Skill, Projet, Cv
+from .models import Skill, Projet, Cv, Contact
+from django.contrib.auth.models import User
 from django.views.generic import DetailView
+from .forms import ContactForm
+
+
+def contact(request):
+    send_form = ""
+    form = ContactForm(request.POST or None)
+    if request.POST and form.is_valid():
+        Contact.objects.create(
+            email=form.cleaned_data["email"],
+            subject=form.cleaned_data["subject"],
+            message=form.cleaned_data["message"],
+        )
+
+        admin = User.objects.get(username="rigal")
+        admin.email_user(form.cleaned_data["subject"], form.cleaned_data["message"])
+        form = ContactForm(None)
+        send_form = "l'email a bien etait envoier"
+
+    return render(request, "portfolio/contact.html", context={"form": form, "send_form": send_form})
 
 
 def cv(request):
