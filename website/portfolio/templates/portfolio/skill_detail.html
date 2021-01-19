@@ -23,6 +23,8 @@
                     <a href="{% url 'projet' projet.pk %}">
                         {{ projet.name }}
                     </a>
+                    {% empty %}
+                        Pas de projet en lien
                     {% endfor %}
                 </p>
                 <hr>

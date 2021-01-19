@@ -20,7 +20,11 @@ def contact(request):
         form = ContactForm(None)
         send_form = "l'email a bien etait envoier"
 
-    return render(request, "portfolio/contact.html", context={"form": form, "send_form": send_form})
+    return render(
+        request,
+        "portfolio/contact.html",
+        context={"form": form, "send_form": send_form},
+    )
 
 
 def cv(request):

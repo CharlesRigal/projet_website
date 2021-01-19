@@ -58,30 +58,14 @@
 						<a class="nav-link" href="{% url 'skills' %}">Mes competences</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{% url 'cv' %}">Mon Cv</a>
+						<a class="nav-link" href="{% url 'projects' %}">Mes Projets</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{% url 'projects' %}">Mes Projets</a>
+						<a class="nav-link" href="{% url 'cv' %}">Mon Cv</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{% url 'contact' %}">contacter moi</a>
 					</li>
-
-					{% if user.is_authenticated %}
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'edit_account' %}">compte</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'logout' %}">déconnection</a>
-					</li>
-					{% else %}
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'login' %}">Connexion</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'register' %}">S'inscrire</a>
-					</li>
-					{% endif %}
 				</ul>
 			</div>
 		</div>
@@ -129,7 +113,7 @@
 							</a>
 						</li>
 					</ul>
-					<p class="copyright text-muted">Copyright &copy; Mon Portfolio 2020</p>
+					<p class="copyright text-muted">Copyleft 🄯; Mon Portfolio 2020</p>
 				</div>
 			</div>
 		</div>
