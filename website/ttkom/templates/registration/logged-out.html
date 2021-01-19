@@ -1,2 +1,8 @@
-a faire
-<a href="{% url 'index' %}">retour au site</a>
+{% extends "ttkom/base.html" %}
+{% load static %}
+{% block title %}Le Blog{% endblock %}
+{% block image %}{% static "ttkom/img/home-bg.jpg" %}{% endblock %}
+{% block head_title %}<a href="{% url 'index' %}"><i class="fas fa-home fa-3x test"></i><br /><h4>Retour au Menu</h4></a>{% endblock %}
+{% block subtitle %}Vous avez bien été déconnecté{% endblock %}
+{% block content %}
+{% endblock %}

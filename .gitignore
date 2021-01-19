@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 */__pycache__/
 website/db.sqlite3
 *.pyc
-=======
-*/__pycache__/
-website/db.sqlite3
-*.pyc
->>>>>>> development
+website/media/*

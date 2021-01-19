@@ -1,0 +1,44 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block picture %}{% static "portfolio/img/bg-skills.jpeg" %}{% endblock %}
+{% block head_title %}Mes Competances{% endblock %}
+{% block subheading %}</hr>{% endblock %}
+{% block content %}
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% for skill in skills %}
+            <div class="post-preview">
+                <a href="{% url 'skill' skill.pk %}">
+                    <h2 class="post-title">
+                        {{ skill.name }}
+                    </h2>
+                    <h3 class="post-subtitle">
+                        {{ skill.wording|truncatewords:10 }}
+                    </h3>
+                </a>
+                <!-- in work
+                <p class="post-meta">
+                    Projets en liens
+                    {% for projet in skills.project_set.all %}
+                    <a href="{% url 'pf_index' %}">
+                        {{ projet.name }}
+                    </a>
+                    {% endfor %}
+                </p>
+                -->
+            </div>
+            <hr>
+            {% empty %}
+            <div class="post-preview">
+                <h3 class="post-title"> Il semblerait qu'il n'y a pas encore de competance ... </h3>
+            </div>
+            {% endfor %}
+
+        </div>
+        <hr>
+    </div>
+</div>
+</div>
+{% endblock %}

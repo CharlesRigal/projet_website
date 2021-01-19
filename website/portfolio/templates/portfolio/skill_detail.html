@@ -1,0 +1,36 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block picture %}{{ skill.picture.url }}{% endblock %}
+{% block head_title %}{{ skill.name }}{% endblock %}
+{% block subheading %}{{ skill.subtitle }}{% endblock %}
+
+
+{% block content %}
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                {{ skill.wording }}
+                <hr>
+            </div>
+            <hr>
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <p class="post-meta">
+                    projet en lien
+                    {% for projet in projets %}
+                    <a href="{% url 'projet' projet.pk %}">
+                        {{ projet.name }}
+                    </a>
+                    {% empty %}
+                        Pas de projet en lien
+                    {% endfor %}
+                </p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+<hr>
+{% endblock %}

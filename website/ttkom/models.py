@@ -9,6 +9,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email_confirmed = models.BooleanField(default=False)
+    pp = models.ImageField(upload_to="user-photo", null=True)
 
     def __str__(self):
         return self.user.username
@@ -46,4 +47,7 @@ class Comment(models.Model):
     fk_post = models.ForeignKey(Post, on_delete=models.DO_NOTHING)
     content = models.TextField()
     date_comment = models.DateTimeField(auto_now_add=True)
-    likes = models.ManyToManyField(User, related_name="blog_comment")
+    likes = models.ManyToManyField(User, related_name="blog_comment", blank=True)
+
+    def __str__(self):
+        return f"{ self.fk_author.username }, { self.fk_post.name }"
