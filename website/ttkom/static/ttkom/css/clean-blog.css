@@ -134,6 +134,7 @@ img::-moz-selection {
 
 .trycss {
   border-radius: 15px;
+  border: 2px solid #868e96;
   display: inline-block;
   max-width:100px;
   max-height:95px;

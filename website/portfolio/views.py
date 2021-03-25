@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Skill, Projet, Cv, Contact
+from .models import Skill, Projet, Cv, Contact, Index_wording, Category
 from django.contrib.auth.models import User
 from django.views.generic import DetailView
 from .forms import ContactForm
@@ -33,12 +33,16 @@ def cv(request):
 
 
 def index(request):
-    return render(request, "portfolio/pf_index.html")
+    wording = get_object_or_404(Index_wording, pk=1)
+    return render(request, "portfolio/pf_index.html",context={"wording": wording})
 
 
 def projects(request):
     projets = Projet.objects.all()
-    context = {"projets": projets}
+    categorys = {category.name:Projet.objects.filter(fk_category=category) for category in Category.objects.all()}
+    print(categorys)
+
+    context = {"projets": projets,"categorys": categorys}
     return render(request, "portfolio/pf_projects.html", context=context)
 
 

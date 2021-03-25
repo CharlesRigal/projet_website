@@ -8,6 +8,8 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+            {% for category, projets in categorys.items %}
+            <h1 class="text-center text-underline">Category: {{ category }}</h1>
             {% for projet in projets %}
             <div class="post-preview">
                 <a href="{% url 'projet' projet.pk %}">
@@ -17,7 +19,7 @@
                     <h3 class="post-subtitle">
                         {{ projet.wording|truncatewords:10 }}
                     </h3>
-                    <img class="trycss" src="{{ projet.picture.url }}">
+                    <img class="trycss image-portfolio" src="{{ projet.picture.url }}">
                 </a>
                 <p class="post-meta">
                     competance en liens
@@ -34,7 +36,7 @@
                 <h3 class="post-title"> Il semblerait qu'il n'y a pas encore de projet sur le site ... </h3>
             </div>
             {% endfor %}
-
+            {% endfor %}
         </div>
         <hr>
     </div>

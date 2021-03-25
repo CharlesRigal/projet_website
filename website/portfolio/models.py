@@ -2,6 +2,14 @@ from django.db import models
 
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+class Index_wording(models.Model):
+    wording= models.TextField()
+
 
 class Contact(models.Model):
     email = models.EmailField()
@@ -28,6 +36,7 @@ class Projet(models.Model):
     wording = models.TextField()
     picture = models.ImageField(str(name) + "_picture", upload_to="projet/")
     skills = models.ManyToManyField(Skill, blank=True)
+    fk_category = models.ForeignKey(Category, verbose_name="projet categoriser", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
