@@ -62,10 +62,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-if not DEBUG:
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFileStorage"
-
 ROOT_URLCONF = "website.urls"
 
 LOGIN_REDIRECT_URL = "index"
