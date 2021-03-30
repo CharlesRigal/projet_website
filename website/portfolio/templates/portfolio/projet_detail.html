@@ -20,9 +20,8 @@
                 <p class="post-meta">
                     competence en lien
                     {% for skill in skills %}
-                    <a href="{% url 'skill' skill.pk %}">
-                        {{ skill.name }}
-                    </a>
+                    &nbsp
+		    <a href="{% url 'skill' skill.pk %}">{{ skill.name }}</a>
                     {% empty %}
                         Pas de competence en lien
                     {% endfor %}

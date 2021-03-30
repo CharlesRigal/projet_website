@@ -20,9 +20,8 @@
                 <p class="post-meta">
                     projet en lien
                     {% for projet in projets %}
-                    <a href="{% url 'projet' projet.pk %}">
-                        {{ projet.name }}
-                    </a>
+		    &nbsp
+                    <a href="{% url 'projet' projet.pk %}">{{ projet.name }}</a>
                     {% empty %}
                         Pas de projet en lien
                     {% endfor %}
