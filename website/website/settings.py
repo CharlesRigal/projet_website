@@ -25,21 +25,15 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get("ENV") == "PRODUCTION":
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["ttkom.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["3.143.142.181", "127.0.0.1"]
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "adress@gmail.com"
-EMAIL_HOST_PASSWORD = "dfqgkjqshdgqhgq"
+EMAIL_HOST_USER = "rcserveur@gmail.com"
+EMAIL_HOST_PASSWORD = "15CK3dURQleUCEwP23K1kylYXTNjRG"
 EMAIL_PORT = 587
-
-if DEBUG:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Application definition
 
@@ -64,9 +58,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-if not DEBUG:
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFileStorage"
 
 ROOT_URLCONF = "website.urls"
 
@@ -97,8 +88,11 @@ WSGI_APPLICATION = "website.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "blog_portfolio",
+	"USER": "django",
+	"PASSWORD": "53ZsAvLDLZS4QwNO2TF4",
+	"HOST": "localhost",
     }
 }
 
@@ -138,12 +132,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-if not DEBUG:
-    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
-
-    STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static"),)
 STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
