@@ -33,6 +33,7 @@ class Skill(models.Model):
 
 class Projet(models.Model):
     name = models.CharField("Nom", max_length=50)
+    subheading = models.TextField()
     wording = models.TextField()
     picture = models.ImageField(str(name) + "_picture", upload_to="projet/")
     skills = models.ManyToManyField(Skill, blank=True)

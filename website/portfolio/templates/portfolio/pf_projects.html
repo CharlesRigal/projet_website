@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
             {% for category, projets in categorys.items %}
-            <h1 class="text-center text-underline">Category: {{ category }}</h1>
+            <h1 class="text-center text-underline">Catégorie: {{ category }}</h1>
             {% for projet in projets %}
             <div class="post-preview">
                 <a href="{% url 'projet' projet.pk %}">
@@ -17,7 +17,7 @@
                         {{ projet.name }}
                     </h2>
                     <h3 class="post-subtitle">
-                        {{ projet.wording|truncatewords:10 }}
+                        {{ projet.subheading|truncatewords:10 }}
                     </h3>
                     <img class="trycss image-portfolio" src="{{ projet.picture.url }}">
                 </a>
@@ -36,6 +36,7 @@
                 <h3 class="post-title"> Il semblerait qu'il n'y a pas encore de projet sur le site ... </h3>
             </div>
             {% endfor %}
+	    </hr>
             {% endfor %}
         </div>
         <hr>

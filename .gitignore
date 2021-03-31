@@ -4,3 +4,4 @@ website/db.sqlite3
 .vscode
 website/media/*
 website/static/*
+*.env
