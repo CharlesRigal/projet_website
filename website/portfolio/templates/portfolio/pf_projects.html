@@ -24,7 +24,7 @@
                 <p class="post-meta">
                     competance en liens
                     {% for skill in projet.skills.all %}
-                    <a href="{% url 'skill' projet.pk %}">
+                    <a href="{% url 'skill' skill.pk %}">
                         {{ skill.name }}
                     </a>
                     {% endfor %}

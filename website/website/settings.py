@@ -17,24 +17,24 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load dotenv python
-project_folder = os.path.expanduser(os.path.join(BASE_DIR))
-load_dotenv(os.path.join(BASE_DIR, "website/website/.env"))
+load_dotenv(os.path.join(BASE_DIR, "website/.env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "sdjgqfb4qf5bfqfbq7dfb4qfb5"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = False
 
 ALLOWED_HOSTS = ["3.143.142.181", "127.0.0.1"]
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "rcserveur@gmail.com"
-EMAIL_HOST_PASSWORD = "15CK3dURQleUCEwP23K1kylYXTNjRG"
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
 
 # Application definition
