@@ -17,13 +17,14 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load dotenv python
-load_dotenv(os.path.join(BASE_DIR, "website/.env"))
+project_folder = os.path.expanduser(os.path.join(BASE_DIR))
+load_dotenv(os.path.join(BASE_DIR, "website/website/.env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "bdfshgf41sdf5bsd1bsd5fbsd1bsd5bs1fbd5b4sdbqd56b213dff551qfv"
+SECRET_KEY = "sdjgqfb4qf5bfqfbq7dfb4qfb5"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
